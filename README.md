@@ -1,5 +1,5 @@
 # CryptoMart
-Developed a Decentralized application which is considered as a Web3 enabled Application with have login functionality through the use of Web3 login with Metamask along with an interactive frontend. The Application must communicate with an underlying smart contract deployed on the Sepolia test network deployed in Elastic beanstalk..
+I have developed a Decentralized application considered a Web3-enabled Application with login functionality through the Web3 login with Metamask and an interactive frontend. The Application must communicate with an underlying smart contract deployed on the Sepolia test network deployed in Elastic Beanstalk.
 
 # Tech Stack
 ```python
