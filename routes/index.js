@@ -1,22 +1,41 @@
-import express from 'express';
-
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Welcome to Web3 BootStrap App', name: null });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Welcome to Web3 BootStrap App', name:null });
 });
 
-router.post('/', (req, res, next) => {
-  res.render('index', { title: 'Welcome to Web3 BootStrap App', name: req.body.name });
+router.post('/', function(req, res, next) {
+
+  res.render('index', { title: 'Welcome to Web3 BootStrap App', name:req.body.name });
 });
 
-router.get('/page1', (req, res, next) => {
-    res.render('page1', { title: 'Welcome to Web3 BootStrap App', name: null });
+router.get('/page1', function(req, res, next) {
+  res.render('page1', { title: 'Welcome to Web3 BootStrap App', name:null });
 });
 
-router.get('/page2', (req, res, next) => {
-    res.render('page2', { title: 'Welcome to Web3 BootStrap App', name: null });
+router.get('/page2', function(req, res, next) {
+  res.render('page2', { title: 'Welcome to Web3 BootStrap App', name:null });
 });
 
-export default router;
+router.get('/page3', function(req, res, next) {
+  res.render('page3', { title: 'Welcome to Web3 BootStrap App', name:null });
+});
+
+router.get('/page4', function(req, res, next) {
+  res.render('page4', { title: 'Welcome to Web3 BootStrap App', name:null });
+});
+
+
+router.get('/page5', function(req, res, next) {
+  res.render('page5', { title: 'Welcome to Web3 BootStrap App', name:null });
+});
+
+router.get('/page6', function(req, res, next) {
+  res.render('page6', { title: 'Welcome to Web3 BootStrap App', name:null });
+});
+
+
+
+module.exports = router;

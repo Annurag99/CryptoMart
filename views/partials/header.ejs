@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CryptoMart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .col-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-right: 2rem;
+    }
+
+    input {
+      width: 25vw;
+      height: 25px;
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      outline: none;
+    }
+
+    #readArea {
+      flex-basis: 50%;
+    }
+
+    #writeArea {
+      flex-basis: 50%;
+    }
+
+    button:hover {
+      background-color: grey;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar sticky-top navbar-inverse navbar-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> CryptoMart</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li>
+            <button class="btn btn-dark navbar-btn" onclick="getBalanceApple()">
+              <span class="glyphicon glyphicon-user"></span> Get Contract Balance
+            </button>
+            <p id="balanceArea" style="color: chartreuse;">Balance: Not Connected to Contract</p>
+            <!-- CAlling the function designed in Transactions.sol get balance -->
+            <!-- index html to meta-->
+          </li>
+          <li class="active"><a href="#">Products</a></li>
+          <li>
+            <button class="btn btn-dark navbar-btn" onclick="connectContract()">
+              <span class="glyphicon glyphicon-log-in"></span> Connect to Contract
+            </button>
+            <p id="contractArea" style="color: chartreuse;">Status: Not connected to Contract</p>
+            <!-- index html to meta-->
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button class="btn btn-dark navbar-btn" onclick="connectMetamask()">
+              <span class="glyphicon glyphicon-user"></span> Connect to Metamask
+            </button>
+            <p id="userArea" style="color: chartreuse;">Status: Not connected to Metamask</p>
+            <!-- index html to meta-->
+          </li>
+          <li class="active"><a href="/page1"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>

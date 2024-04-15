@@ -10,6 +10,7 @@ app.set('views', path.join(process.cwd(), 'views'));
 app.set('view engine', 'ejs');
 app.use('/', indexRouter);
 
+app.use(express.static(path.join(process.cwd(), 'public')));
 // Serve the index.html file
 app.get("/", (req, res) => {
     res.sendFile(path.join(process.cwd(), "index.html"));
