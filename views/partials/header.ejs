@@ -62,6 +62,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active" id="login-button"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Log In</a></li>
           <li class="nav-item" id="login-name" style="margin-top: 15px; color: chartreuse;"></li>
+          <li class="active" id="logout-button" onclick="logout()"><a href="/"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
         </ul>
       </div>
     </div>
@@ -78,7 +79,15 @@
       document.getElementById("login-name").innerHTML = "Welcome, " + username;
       // Hide the Log In button
       document.getElementById("login-button").style.display = "none";
+      document.getElementById("logout-button").style.display = "block";
     }
+  }
+
+  function logout() {
+    // Remove item from session storage
+    sessionStorage.removeItem("username");
+    document.getElementById("login-button").style.display = "block";
+    document.getElementById("logout-button").style.display = "none";
   }
 
   const fetchComicsData = async () => {
