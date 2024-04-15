@@ -68,7 +68,7 @@
 
           <!-- Contact form -->
           <div class="col-sm-4">
-            <form role="form" name="ajax-form" id="ajax-form" method="post" class="form-main" action="#">
+            <form role="form" name="ajax-form" id="ajax-form" method="get" class="form-main" action="#">
               <div class="form-group">
                 <label for="name2" style="float: left; color: aliceblue;">Name</label>
                 <input class="form-control" id="name2" name="name" type="text" placeholder="Please enter your name">
@@ -93,15 +93,9 @@
 
               <div class="row" style="float: right;margin-right: 1px;">
                 <!-- Add an onclick event handler to call a JavaScript function when the button is clicked -->
-                <button type="submit" class="btn btn-info" id="send" onclick="showSuccessAlert()">Send</button>
+                <button type="submit" class="btn btn-info" id="send" onclick="showAlertFooter()">Send</button>
               </div> <!-- /col -->
               </form> <!-- /form -->
-              <script>
-                // Function to show alert when the form is submitted
-                function showAlert() {
-                  alert("Thanks for your response!");
-                }
-              </script>
         </div>
       </div> <!-- end row -->
   </div>
