@@ -29,8 +29,7 @@ npm install
 npm start
 ```
 
-# Demo & Screenshots
-
+# Demo
 Demo URL
 ```python
 http://x23180013mysalon-env.eba-4wzwbr6m.eu-west-1.elasticbeanstalk.com/
@@ -39,7 +38,4 @@ Demo video URL
 ```python
 https://youtu.be/7PAqRCsk11Q
 ```
-Pages Screenshots
-
-Home
-
+https://github.com/Annurag99/CryptoMart/assets/157478528/e770ab18-aeb6-4209-8dd7-a2288fd85cd2)
