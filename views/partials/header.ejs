@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>CryptoMart</title>
+  <title>CryptoComicMart</title>
+  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/yNTr8D3/index.jpg">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -48,33 +49,51 @@
 </head>
 
 <body>
-  <nav class="navbar sticky-top navbar-inverse navbar-dark">
+  <nav class="navbar sticky-top navbar-inverse navbar-dark" style="background-color: black !important;">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> CryptoMart</a>
+        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> CryptoComicMart</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">Home</a></li>
-          <li class="active"><a href="/page2">Products</a></li>
-          <li>
-            <button class="btn btn-dark navbar-btn" onclick="connectContract()">
-              <span class="glyphicon glyphicon-log-in"></span> Connect to Contract
-            </button>
-            <p id="contractArea" style="color: chartreuse;">Status: Not connected to Contract</p>
-            <!-- index html to meta-->
-          </li>
+          <li class="active"><a href="/products">Products</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <button class="btn btn-dark navbar-btn" onclick="connectMetamask()">
-              <span class="glyphicon glyphicon-user"></span> Connect to Metamask
-            </button>
-            <p id="userArea" style="color: chartreuse;">Status: Not connected to Metamask</p>
-            <!-- index html to meta-->
-          </li>
-          <li class="active"><a href="/page1"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+          <li class="active" id="login-button"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Log In</a></li>
+          <li class="nav-item" id="login-name" style="margin-top: 15px; color: chartreuse;"></li>
         </ul>
       </div>
     </div>
   </nav>
+<script>
+  // Function to retrieve the username from session storage
+  function retrieveLoginName() {
+    // Retrieve the username from session storage
+    var username = sessionStorage.getItem("username");
+    // Check if the username exists
+    if (username) {
+      // Display the login name in the navbar
+      document.getElementById("login-name").innerHTML = "Welcome, " + username;
+      // Hide the Log In button
+      document.getElementById("login-button").style.display = "none";
+    }
+  }
+
+  const fetchComicsData = async () => {
+    try {
+      const response = await fetch("https://f76bda4c-44c7-4714-91a9-d45f4a4cda92.mock.pstmn.io");
+      const data = await response.json();
+      sessionStorage.setItem('comicsData', JSON.stringify(data));
+      console.log('Comics data stored in session storage:', data);
+    } catch (error) {
+      console.error('Error fetching comics data:', error);
+    }
+  };
+
+  // Assign both functions to the window.onload event handler
+  window.onload = function () {
+    fetchComicsData();
+    retrieveLoginName();
+  };
+</script>

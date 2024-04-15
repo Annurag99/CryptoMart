@@ -16,17 +16,19 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(process.cwd(), "index.html"));
 });
 
-// Endpoint to get vodka cocktails===ds
-app.get('/cocktails/vodka', async (req, res) => {
+// Define the endpoint to fetch comics/anime
+app.get('/comics/anime', async (req, res) => {
     try {
-        const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka");
+        const response = await fetch("https://f76bda4c-44c7-4714-91a9-d45f4a4cda92.mock.pstmn.io");
         const data = await response.json();
-        res.json(data);  
+        res.json(data);
+        console.log(res.json(data));
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
 
 // Start the server
 const port = process.env.PORT || 3001;

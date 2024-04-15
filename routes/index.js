@@ -11,12 +11,12 @@ router.post('/', function(req, res, next) {
   res.render('index', { title: 'Welcome to Web3 BootStrap App', name:req.body.name });
 });
 
-router.get('/page1', function(req, res, next) {
-  res.render('page1', { title: 'Welcome to Web3 BootStrap App', name:null });
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Welcome to Web3 BootStrap App', name:null });
 });
 
-router.get('/page2', function(req, res, next) {
-  res.render('page2', { title: 'Welcome to Web3 BootStrap App', name:null });
+router.get('/products', function(req, res, next) {
+  res.render('products', { title: 'Welcome to Web3 BootStrap App', name:null });
 });
 
 module.exports = router;

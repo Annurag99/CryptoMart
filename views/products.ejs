@@ -1,0 +1,112 @@
+<%- include partials/header.ejs %>
+<div id="success-alert-contract" class="alert alert-success" style="display: none;">
+    <strong>Success!</strong> You are connected to Contract.
+    <button type="button" class="close" onclick="removeAlertContract()">&times;</button>
+</div>
+<div class="container">
+    <h6 style="color: aliceblue;">Reading from and Writing to Contract. A seamless way to get contract account details
+        along with the abilities to send or
+        withdraw ether.</h6>
+    <!-- READING FROM CONTRACT -->
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-dark navbar-btn" onclick="connectContract();showSuccessAlert()">
+                <span class="glyphicon glyphicon-log-in"></span> Connect to Contract
+            </button>
+            <p id="contractArea" style="color: chartreuse;">Status: Not connected to Contract</p>
+            <!-- index html to meta-->
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-dark navbar-btn" onclick="getContractAccount()"> Get Contract Account</button>
+            <p id="contractAccount" style="color: chartreuse;">Contract Account: Not Connected to Contract</p>
+            <!-- Calling the function designed in Transactions.sol get deployment address -->
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-dark navbar-btn" onclick="getBalanceApple()">
+                <span class="glyphicon glyphicon-user"></span> Get Contract Balance 
+            </button>
+            <p id="balanceArea" style="color: chartreuse;">Balance: Not Connected to Contract</p>
+            <!-- CAlling the function designed in Transactions.sol get balance -->
+            <!-- index html to meta-->
+        </div>
+    </div>
+</div>
+
+<div id="success-alert-contract" class="alert alert-success" style="display: none;">
+        <strong>Success!</strong> You are connected to Contract.
+        <button type="button" class="close" onclick="removeAlertContract()">&times;</button>
+    </div>
+    <div class="container text-center">
+        <h3 style="color: aliceblue;">Our Collection</h3><br>
+        <div id="comicsContainer">
+            <!-- Comics cards will be dynamically generated here -->
+        </div>
+    </div>
+
+<script>
+    // Function to show Bootstrap alert when the form is submitted
+    function showSuccessAlert() {
+        // Show the Bootstrap alert
+        document.getElementById("success-alert-contract").style.display = "block";
+    }
+
+    // Function to remove Bootstrap alert
+    function removeAlertContract() {
+        // Hide the Bootstrap alert
+        document.getElementById("success-alert-contract").style.display = "none";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve comics data from session storage
+        const comicsData = JSON.parse(sessionStorage.getItem('comicsData'));
+        const comicsContainer = document.getElementById('comicsContainer');
+
+        // Iterate over each comic in the data and create a card for it
+        comicsData.comics.forEach(comic => {
+            // Create elements for the card
+            const col = document.createElement('div');
+            col.classList.add('col-md-4');
+
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.style.width = '18rem';
+
+            const img = document.createElement('img');
+            img.src = comic.img;
+            img.alt = comic.title;
+            img.classList.add('card-img-top');
+            img.width = 250;
+            img.height = 250;
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            const title = document.createElement('h5');
+            title.classList.add('card-title');
+            title.style.color = 'aliceblue';
+            title.textContent = `${comic.title}`;
+
+            const buyNowBtn = document.createElement('a');
+            buyNowBtn.href = '#';
+            buyNowBtn.classList.add('btn', 'btn-success');
+            buyNowBtn.textContent = `Buy Now ${comic.price}`;
+            buyNowBtn.style = 'margin-bottom: 2rem';
+            buyNowBtn.onclick = function () {
+                withdraw(parseInt(comic.price.replace(/\D/g, ''), 10));
+            };
+
+            // Append elements to the card
+            cardBody.appendChild(title);
+            cardBody.appendChild(buyNowBtn);
+
+            card.appendChild(img);
+            card.appendChild(cardBody);
+
+            col.appendChild(card);
+
+            // Append card column to the container
+            comicsContainer.appendChild(col);
+        });
+    });
+</script>
+<%- include partials/footer.ejs %>

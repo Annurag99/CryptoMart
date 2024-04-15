@@ -1,0 +1,26 @@
+<%- include partials/header.ejs %>
+  <div id="success-alert-meta" class="alert alert-success" style="display: none;">
+    <strong>Success!</strong> You are connected to Metamask.
+    <button type="button" class="close" onclick="removeAlertMeta()">&times;</button>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-dark navbar-btn" onclick="connectMetamask();showAlertMeta()">
+        <span class="glyphicon glyphicon-user"></span> Connect to Metamask
+      </button>
+      <p id="userArea" style="color: chartreuse;">Status: Not connected to Metamask</p>
+      <!-- index html to meta-->
+    </div>
+  </div>
+  <!-- Bootstrap alert -->
+  <script>
+    function showAlertMeta() {
+      document.getElementById("success-alert-meta").style.display = "block";
+    }
+
+    function removeAlertMeta() {
+      // Hide the Bootstrap alert
+      document.getElementById("success-alert-meta").style.display = "none";
+    }
+  </script>
+<%- include partials/footer.ejs %>

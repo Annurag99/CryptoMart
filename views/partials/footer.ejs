@@ -68,7 +68,7 @@
 
           <!-- Contact form -->
           <div class="col-sm-4">
-            <form role="form" name="ajax-form" id="ajax-form" method="post" class="form-main" action="{% url 'home' %}">
+            <form role="form" name="ajax-form" id="ajax-form" method="post" class="form-main" action="#">
               <div class="form-group">
                 <label for="name2" style="float: left; color: aliceblue;">Name</label>
                 <input class="form-control" id="name2" name="name" type="text" placeholder="Please enter your name">
@@ -85,17 +85,23 @@
               <div class="form-group">
                 <label for="message2" style="float: left; color: aliceblue;">Message</label>
                 <textarea class="form-control" id="message2" name="message" rows="5"
-                  placeholder="message">Please enter message or feedback</textarea>
+                  placeholder="Please enter message or feedback"></textarea>
 
                 <div class="error" id="err-message" style="display: none;">Please enter message or
                   feedback</div>
               </div> <!-- /col -->
 
               <div class="row" style="float: right;margin-right: 1px;">
-                <button type="submit" class="btn btn-info" id="send">Send</button>
+                <!-- Add an onclick event handler to call a JavaScript function when the button is clicked -->
+                <button type="submit" class="btn btn-info" id="send" onclick="showSuccessAlert()">Send</button>
               </div> <!-- /col -->
-          </div> <!-- /row -->
-          </form> <!-- /form -->
+              </form> <!-- /form -->
+              <script>
+                // Function to show alert when the form is submitted
+                function showAlert() {
+                  alert("Thanks for your response!");
+                }
+              </script>
         </div>
       </div> <!-- end row -->
   </div>
@@ -116,11 +122,14 @@
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
       account = accounts[0];
       document.getElementById("userArea").innerHTML = `User Account: ${account}`;
+      document.getElementById("login-name").innerHTML = `Welcome, ${account}`;
+      sessionStorage.setItem("username", account);
+      document.getElementById("login-button").style.display = "none";
     }
   }
 
   const connectContract = async () => {
-    // My contract ABI and address
+    // My contract ABI
     const ABI = [
       {
         "inputs": [],
@@ -175,7 +184,7 @@
       }
     ];
 
-    const address = "0x5f169041a35ef3489c2ff1aca65a07c4400062a0";
+    const address = "0x5f169041a35ef3489c2ff1aca65a07c4400062a0"; // contract address
     window.web3 = await new Web3(window.ethereum);
     window.contract = await new window.web3.eth.Contract(ABI, address);
     document.getElementById("contractArea").innerHTML = "Connected to Contract"; // calling the elementID above
@@ -191,15 +200,13 @@
     document.getElementById("balanceArea").innerHTML = `Contract Balance: ${data}`;
   }
 
-  const depositContract = async () => {
-    const amount = document.getElementById("depositInput").value;
-    await window.contract.methods.deposit().send({ from: account, value: amount });
+  const depositContract = async (amount) => {
+    await window.contract.methods.deposit().send({ from: sessionStorage.getItem("username"), value: amount });
   }
 
-  const withdraw = async () => {
-    const amount = document.getElementById("amountInput").value;
-    const address = document.getElementById("addressInput").value;
-    await window.contract.methods.withdraw(address, amount).send({ from: account });
+  const withdraw = async (amount) => {
+    const address = '0xC04BDC579718e7F6c82FAFB79ed3C39396a20a43'; // metamask wallet
+    await window.contract.methods.withdraw(address, amount).send({ from: sessionStorage.getItem("username") });
   }
 </script>
 
