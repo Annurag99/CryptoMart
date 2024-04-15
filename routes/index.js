@@ -19,23 +19,4 @@ router.get('/page2', function(req, res, next) {
   res.render('page2', { title: 'Welcome to Web3 BootStrap App', name:null });
 });
 
-router.get('/page3', function(req, res, next) {
-  res.render('page3', { title: 'Welcome to Web3 BootStrap App', name:null });
-});
-
-router.get('/page4', function(req, res, next) {
-  res.render('page4', { title: 'Welcome to Web3 BootStrap App', name:null });
-});
-
-
-router.get('/page5', function(req, res, next) {
-  res.render('page5', { title: 'Welcome to Web3 BootStrap App', name:null });
-});
-
-router.get('/page6', function(req, res, next) {
-  res.render('page6', { title: 'Welcome to Web3 BootStrap App', name:null });
-});
-
-
-
 module.exports = router;
