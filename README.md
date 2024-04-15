@@ -38,4 +38,4 @@ Demo video URL
 ```python
 https://youtu.be/7PAqRCsk11Q
 ```
-https://github.com/Annurag99/CryptoMart/assets/157478528/e770ab18-aeb6-4209-8dd7-a2288fd85cd2)
+Demo video - ```python https://github.com/Annurag99/CryptoMart/assets/157478528/e770ab18-aeb6-4209-8dd7-a2288fd85cd2 ```
