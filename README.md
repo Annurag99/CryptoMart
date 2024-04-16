@@ -14,7 +14,7 @@ CSS3
 # Instructions for installation
 
 ```python
-git clone https://github.com/Annurag99/Salon-Connect.git
+git clone https://github.com/Annurag99/CryptoMart.git
 ```
 
 ```python
